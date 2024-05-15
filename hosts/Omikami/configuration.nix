@@ -38,7 +38,10 @@
 
   hardware = {
     printing.enable = true;
-    sound.enable = true;
+    sound = {
+      enable = true;
+      use = "pipewire";
+    };
     #CPU.intel.enable = true;
     #GPU.nvidia.enable = true;
   };
