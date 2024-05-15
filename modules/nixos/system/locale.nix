@@ -5,11 +5,11 @@ let
 in {
   options.system.locale = {
     defaultLocale = {
-      type = types.str;
+      type = lib.types.str;
       default = "en_US.UTF-8";
     };
     extraLocales = {
-      type = types.listOf types.str;
+      type = lib.types.listOf lib.types.str;
       default = {};
     };
   };

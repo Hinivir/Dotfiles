@@ -8,7 +8,7 @@ in {
     grub = {
       enable = lib.mkEnableOption "Enable GRUB";
       device = lib.mkOption {
-        type = types.str;
+        type = lib.types.str;
         default = "/dev/sda";
         description = "The device to install GRUB on";
       };
@@ -18,7 +18,7 @@ in {
     systemd-boot = {
       enable = lib.mkEnableOption "Enable systemd-boot";
       device = lib.mkOption {
-        type = types.str;
+        type = lib.types.str;
         default = "/dev/sda";
         description = "The device to install systemd-boot on";
       };
