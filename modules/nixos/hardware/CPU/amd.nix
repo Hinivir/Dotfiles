@@ -24,7 +24,7 @@ in {
           "msr" # x86 CPU MSR access device
         ];
         extraModulePackages = [config.boot.kernelPackages.zenpower];
-      }
+      };
   };
 
 }
