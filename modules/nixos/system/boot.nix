@@ -32,16 +32,16 @@ in {
         boot.loader.grub = {
           enable = true;
           version = 2;
-          device = "/dev/sda";
-          efiSupport = true;
-          useOSProber = true;
+          device = cfg.grub.device;
+          efiSupport = cfg.grub.efiSupport;
+          useOSProber = cfg.grub.useOSProber;
         };
       };
 
       systemd-boot = lib.mkIf cfg.systemd-boot.enable {
         boot.loader.systemd-boot = {
           enable = true;
-          device = "/dev/sda";
+          device = cfg.systemd-boot.device;
         };
       };
 

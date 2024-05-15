@@ -79,6 +79,9 @@
     fastfetch
     firefox
     direnv
+    neovim
+    nh
+    nvd
   ];
 
   services.openssh.enable = true;
