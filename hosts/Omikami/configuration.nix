@@ -9,6 +9,8 @@
 
   networking.hostName = "Omikami";
 
+  networking.networkmanager.enable = true;
+
   system = {
     boot = {
       enable = true;
@@ -42,8 +44,8 @@
       enable = true;
       use = "pipewire";
     };
-    #CPU.intel.enable = true;
-    #GPU.nvidia.enable = true;
+    CPU.intel.enable = true;
+    GPU.nvidia.enable = true;
   };
 
   services.xserver.enable = true;
