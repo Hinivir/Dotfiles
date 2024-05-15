@@ -35,7 +35,6 @@ in
 
       systemd-boot = {
         enable = cfg.bootloader == "systemd-boot";
-        device = cfg.device;
       };
 
       efi = {
