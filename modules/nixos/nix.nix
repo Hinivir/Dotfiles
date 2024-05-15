@@ -29,6 +29,7 @@ in {
       };
       experimental-features = {
         nix.settings.experimental-features = cfg.experimental-features.options;
+      };
     };
   };
 }
