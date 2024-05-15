@@ -16,13 +16,12 @@
 
     flake-utils = {
       url = "github:numtide/flake-utils";
-      inputs.systems.follows = "systems";
     };
 
     nil = {
       url = "github:oxalica/nil";
       inputs = {
-        nixpkgs.follows = "nixpkgs-small";
+        nixpkgs.follows = "nixpkgs";
         rust-overlay.follows = "rust-overlay";
       };
     };
