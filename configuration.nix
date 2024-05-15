@@ -1,0 +1,94 @@
+{ config, pkgs, ... }:
+
+{
+  imports =
+    [
+      ./hardware-configuration.nix
+    ];
+
+  boot.loader.grub = {
+    enable = true;
+    device = "/dev/nvme0n1p3";
+    efiSupport = true;
+    useOSProber = true;
+  };
+
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  networking.hostName = "Omikami";
+
+  networking.networkmanager.enable = true;
+
+  time.timeZone = "Europe/Paris";
+
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "fr_FR.UTF-8";
+    LC_IDENTIFICATION = "fr_FR.UTF-8";
+    LC_MEASUREMENT = "fr_FR.UTF-8";
+    LC_MONETARY = "fr_FR.UTF-8";
+    LC_NAME = "fr_FR.UTF-8";
+    LC_NUMERIC = "fr_FR.UTF-8";
+    LC_PAPER = "fr_FR.UTF-8";
+    LC_TELEPHONE = "fr_FR.UTF-8";
+    LC_TIME = "fr_FR.UTF-8";
+  };
+
+  services.xserver.enable = true;
+
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
+  services.desktopManager.plasma6.enable = true;
+
+  services.xserver = {
+    layout = "fr";
+    xkbVariant = "";
+  };
+
+  console.keyMap = "fr";
+
+  services.printing.enable = true;
+
+  sound.enable = true;
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
+
+  services.xserver.libinput.enable = true;
+
+  users.users.viktor = {
+    isNormalUser = true;
+    description = "Viktor Bruggeman";
+    extraGroups = [ "networkmanager" "wheel" ];
+  };
+
+  nixpkgs.config.allowUnfree = true;
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  environment.systemPackages = with pkgs; [
+    vim
+    wget
+    git
+    curl
+    htop
+    fastfetch
+    firefox
+    direnv
+  ];
+
+  programs.gnupg.agent = {
+     enable = true;
+     enableSSHSupport = true;
+  };
+
+  services.openssh.enable = true;
+
+  system.stateVersion = "23.11";
+}
