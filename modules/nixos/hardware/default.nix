@@ -1,7 +1,7 @@
 {
   imports = [
-    ./CPU
-    ./GPU
+    #./CPU
+    #./GPU
 
     ./printing.nix
     ./sound.nix

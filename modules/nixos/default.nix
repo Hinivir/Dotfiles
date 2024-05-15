@@ -3,6 +3,5 @@
     ./hardware
     ./system
 
-    ./nix.nix
   ];
 }

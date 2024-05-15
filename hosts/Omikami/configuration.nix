@@ -12,12 +12,11 @@
   system = {
     boot = {
       enable = true;
-      grub = {
-        enable = true;
-        device = "/dev/nvme0n1p3";
-      };
-      systemd-boot.enable = false;
-      efi.canTouchEfiVariables = true;
+      bootloader = "grub";
+      device = "/dev/nvme0n1p3";
+      efiSupport = true;
+      useOSProber = true;
+      canTouchEfiVariables = true;
     };
 
     time.timeZone = "Europe/Paris";
@@ -40,8 +39,8 @@
   hardware = {
     printing.enable = true;
     sound.enable = true;
-    CPU.intel.enable = true;
-    GPU.nvidia.enable = true;
+    #CPU.intel.enable = true;
+    #GPU.nvidia.enable = true;
   };
 
   services.xserver.enable = true;
@@ -65,10 +64,9 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  nix = {
-    nixpkgs.allowUnfree = true;
-    experimental-features.options = [ "nix-command" "flakes" ];
-  };
+  nixpkgs.config.allowUnfree = true;
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   environment.systemPackages = with pkgs; [
     vim

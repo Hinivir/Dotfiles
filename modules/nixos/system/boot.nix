@@ -1,51 +1,46 @@
-{ lib, config, pkgs, ... }: 
+{ config, lib, pkgs, ... }:
 
 let
   cfg = config.system.boot;
-in {
+in
+{
   options.system.boot = {
     enable = lib.mkEnableOption "Enable boot loader";
-    grub = {
-      enable = lib.mkEnableOption "Enable GRUB";
-      device = lib.mkOption {
-        type = lib.types.str;
-        default = "/dev/sda";
-        description = "The device to install GRUB on";
-      };
-      efiSupport = lib.mkEnableOption "Enable EFI support";
-      useOSProber = lib.mkEnableOption "Use os-prober to detect other operating systems";
+
+    bootloader = lib.mkOption {
+      type = lib.types.enum [ "grub" "systemd-boot" ];
+      default = "grub";
+      description = "The bootloader to use.";
     };
-    systemd-boot = {
-      enable = lib.mkEnableOption "Enable systemd-boot";
-      device = lib.mkOption {
-        type = lib.types.str;
-        default = "/dev/sda";
-        description = "The device to install systemd-boot on";
-      };
+
+    device = lib.mkOption {
+      type = lib.types.str;
+      default = "/dev/sda";
+      description = "The device to install the bootloader on.";
     };
-    efi.canTouchEfiVariables = lib.mkEnableOption "Allow writing to EFI variables";
+
+    efiSupport = lib.mkEnableOption "Enable EFI support";
+    useOSProber = lib.mkEnableOption "Use os-prober to detect other operating systems";
+    canTouchEfiVariables = lib.mkEnableOption "Allow writing to EFI variables";
   };
 
   config = lib.mkIf cfg.enable {
-    system.boot = lib.mkIf cfg.enable {
-      grub = lib.mkIf cfg.grub.enable {
-        boot.loader.grub = {
-          enable = true;
-          version = 2;
-          device = cfg.grub.device;
-          efiSupport = cfg.grub.efiSupport;
-          useOSProber = cfg.grub.useOSProber;
-        };
+    boot.loader = {
+      grub = {
+        enable = cfg.bootloader == "grub";
+        device = cfg.device;
+        efiSupport = cfg.efiSupport;
+        useOSProber = cfg.useOSProber;
       };
 
-      systemd-boot = lib.mkIf cfg.systemd-boot.enable {
-        boot.loader.systemd-boot = {
-          enable = true;
-          device = cfg.systemd-boot.device;
-        };
+      systemd-boot = {
+        enable = cfg.bootloader == "systemd-boot";
+        device = cfg.device;
       };
 
-      efi.canTouchEfiVariables = cfg.efi.canTouchEfiVariables;
+      efi = {
+        canTouchEfiVariables = cfg.canTouchEfiVariables;
+      };
     };
   };
 }
