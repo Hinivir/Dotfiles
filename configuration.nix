@@ -41,9 +41,9 @@
   services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;
 
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "fr";
-    xkbVariant = "";
+    variant = "";
   };
 
   console.keyMap = "fr";
@@ -61,7 +61,7 @@
     jack.enable = true;
   };
 
-  services.xserver.libinput.enable = true;
+  services.libinput.enable = true;
 
   users.users.viktor = {
     isNormalUser = true;
