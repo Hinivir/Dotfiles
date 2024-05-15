@@ -11,7 +11,7 @@ in {
     };
   };
 
-  config.hardware.GPU.nvidia = lib.mkIf {
+  config.hardware.GPU.nvidia = lib.mkIf cfg.enable {
     hardware.opengl = {
       enable = true;
       driSupport = true;
