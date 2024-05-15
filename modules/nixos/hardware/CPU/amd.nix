@@ -15,7 +15,7 @@ in {
     environment.systemPackages = [pkgs.amdctl];
 
     hardware.cpu.amd.updateMicrocode = true;
-    boot = mkMerge [
+    boot = lib.mkMerge [
       {
         kernelModules = [
           "kvm-amd" # amd virtualization
@@ -24,7 +24,8 @@ in {
           "msr" # x86 CPU MSR access device
         ];
         extraModulePackages = [config.boot.kernelPackages.zenpower];
-      };
+      }
+    ];
   };
 
 }
