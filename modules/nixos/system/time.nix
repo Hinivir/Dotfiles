@@ -12,6 +12,6 @@ in {
   };
 
   config = {
-    timeZone = cfg.timeZone;
+    system.time.timeZone = cfg.timeZone;
   };
 }
