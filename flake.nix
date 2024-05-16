@@ -85,7 +85,11 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
+  outputs = {
+    self,
+    nixpkgs,
+    ...
+  } @ inputs: {
     nixosConfigurations.Omikami = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
@@ -97,7 +101,7 @@
     home-manager = {
       extraSpecialArgs = {inherit inputs;};
       viktor = {
-        "viktor" = import ./home.nix;
+        "viktor" = import ./homes/viktor/home.nix;
       };
     };
   };

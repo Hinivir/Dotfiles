@@ -11,7 +11,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    packages = with pkgs; [
+    environment.systemPackages = with pkgs; [
       # defaults worth keeping
       dejavu_fonts
       freefont_ttf

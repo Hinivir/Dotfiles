@@ -1,10 +1,18 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   home.username = "viktor";
   home.homeDirectory = "/home/viktor";
 
   home.stateVersion = "23.11";
+
+  imports = [
+    ../../modules/home/default.nix
+  ];
+
+  alacritty.enable = true;
 
   home.packages = [];
 
