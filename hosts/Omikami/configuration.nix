@@ -1,11 +1,14 @@
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../../modules/nixos
-    ];
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [
+    ./hardware-configuration.nix
+    ../../modules/nixos
+    inputs.nixos-cosmic.nixosModules.default
+  ];
 
   networking.hostName = "Omikami";
 
@@ -20,6 +23,8 @@
       useOSProber = true;
       canTouchEfiVariables = true;
     };
+
+    font.enable = true;
 
     time.timeZone = "Europe/Paris";
   };
@@ -44,7 +49,6 @@
       enable = true;
       use = "pipewire";
     };
-    CPU.intel.enable = true;
     GPU.nvidia.enable = true;
   };
 
@@ -53,6 +57,8 @@
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;
+  #services.desktopManager.cosmic.enable = true;
+  #services.displayManager.cosmic-greeter.enable = true;
 
   services.xserver.xkb = {
     layout = "fr";
@@ -66,12 +72,12 @@
   users.users.viktor = {
     isNormalUser = true;
     description = "Viktor Bruggeman";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
   };
 
   nixpkgs.config.allowUnfree = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   environment.systemPackages = with pkgs; [
     vim

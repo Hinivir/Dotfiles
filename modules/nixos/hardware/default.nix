@@ -1,6 +1,5 @@
 {
   imports = [
-    ./CPU
     ./GPU
 
     ./printing.nix
