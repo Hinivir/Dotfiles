@@ -6,7 +6,7 @@
 }: let
   cfg = config.zsh;
 in {
-  options.zoxide = {
+  options.zsh = {
     enable = lib.mkEnableOption "Enable ZSH";
   };
 

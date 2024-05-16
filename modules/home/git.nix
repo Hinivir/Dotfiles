@@ -5,7 +5,7 @@
 }: let
   cfg = config.git;
 in {
-  options = {
+  options.git = {
     enable = lib.mkEnableOption "Enable git";
     name = lib.mkOption {
       type = lib.types.str;

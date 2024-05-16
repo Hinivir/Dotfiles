@@ -5,7 +5,7 @@
 }: let
   cfg = config.fzf;
 in {
-  options = {
+  options.fzf = {
     enable = lib.mkEnableOption "Enable fzf";
   };
 
