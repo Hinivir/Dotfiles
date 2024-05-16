@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: {
   home.username = "viktor";
@@ -12,9 +13,25 @@
     ../../modules/home/default.nix
   ];
 
-  alacritty.enable = true;
+  alacritty = {
+    enable = true;
+    theme = pkgs.alacritty-theme.catppuccin_mocha;
+  };
+  fzf.enable = true;
+  git = {
+    enable = true;
+    name = "Viktor Bruggeman";
+    email = "viktor.bruggeman@epitech.eu";
+  };
+  tmux.enable = true;
+  zoxide.enable = true;
+  zsh.enable = true;
 
-  home.packages = [];
+  home.packages = [
+    pkgs.eza
+    pkgs.bat
+    pkgs.lazygit
+  ];
 
   home.file = {};
 

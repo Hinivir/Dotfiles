@@ -83,13 +83,27 @@
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
   };
 
   outputs = {
     self,
     nixpkgs,
+    home-manager,
     ...
-  } @ inputs: {
+  } @ inputs: let
+    system = "x86_64-linux";
+    pkgs = import inputs.nixpkgs {
+      inherit system;
+      config = {
+        allowUnfree = true;
+      };
+      overlays = [
+        inputs.alacritty-theme.overlays.default
+      ];
+    };
+  in {
     nixosConfigurations.Omikami = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
@@ -99,8 +113,8 @@
     };
 
     homeConfigurations = {
-      viktor = inputs.home-manager.lib.homeManagerConfiguration {
-        inherit inputs;
+      viktor = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
         modules = [
           ./homes/viktor/home.nix
         ];
@@ -113,11 +127,17 @@
       "https://nix-community.cachix.org"
       "https://nix-gaming.cachix.org"
       "https://cosmic.cachix.org/"
+      "https://attic.alexghr.me/public"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
       "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
+      "public:5MqPjBBGMCWbo8L8voeQl7HXc5oX+MXZ6BSURfMosIo="
+    ];
+    extra-trusted-users = [
+      "@wheels"
+      "viktor"
     ];
   };
 }

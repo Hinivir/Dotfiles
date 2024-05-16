@@ -9,7 +9,7 @@ in {
   options.alacritty = {
     enable = lib.mkEnableOption "Enable alacritty";
     theme = lib.mkOption {
-      type = lib.types.pkgs;
+      type = lib.types.anything;
       default = pkgs.alacritty-theme.catppuccin_mocha;
       description = "The theme for alacritty";
     };
@@ -32,7 +32,7 @@ in {
           decorations_theme_variant = "None";
         };
 
-        imports = [
+        import = [
           cfg.theme
         ];
 
