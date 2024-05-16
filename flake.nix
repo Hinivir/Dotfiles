@@ -99,9 +99,12 @@
     };
 
     homeConfigurations = {
-      extraSpecialArgs = {inherit inputs;};
-      viktor = {
-        "viktor" = import ./homes/viktor/home.nix;
+      viktor = inputs.home-manager.lib.homeManagerConfiguration {
+        inherit inputs;
+        modules = [
+          ./homes/viktor/home.nix
+        ];
+        extraSpecialArgs = {inherit inputs;};
       };
     };
   };
