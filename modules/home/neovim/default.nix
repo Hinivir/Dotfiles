@@ -22,18 +22,12 @@
 
   nvf = inputs.neovim-flake;
 in {
-  options.neovim = {
-    enable = lib.mkEnableOption "Enable neovim";
-  };
+  imports = concatLists [
+    # neovim-flake home-manager module
+    [nvf.homeManagerModules.default]
 
-  config = lib.mkIf cfg.enable {
-    imports = concatLists [
-      # neovim-flake home-manager module
-      [nvf.homeManagerModules.default]
-
-      # construct this entire directory as a module
-      # which means all default.nix files will be imported automatically
-      (mkNeovimModule {path = ./.;})
-    ];
-  };
+    # construct this entire directory as a module
+    # which means all default.nix files will be imported automatically
+    (mkNeovimModule {path = ./.;})
+  ];
 }
