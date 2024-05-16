@@ -12,8 +12,8 @@ in {
   config = lib.mkIf cfg.enable {
     programs.fzf = {
       enable = true;
-      enableZshIntegration = lib.mkIf config.zsh.enable;
-      tmux.enableShellIntegration = lib.mkIf config.tmux.enable;
+      enableZshIntegration = lib.mkIf config.zsh.enable true;
+      tmux.enableShellIntegration = lib.mkIf config.tmux.enable true;
     };
   };
 }
