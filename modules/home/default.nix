@@ -5,7 +5,7 @@
     ./fzf.nix
     ./git.nix
     #./gpg.nix
-    #./neovim.nix
+    ./neovim
     ./tmux.nix
     ./zoxide.nix
     ./zsh.nix

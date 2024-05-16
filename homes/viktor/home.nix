@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   home.username = "viktor";
   home.homeDirectory = "/home/viktor";
 
@@ -26,6 +21,7 @@
   tmux.enable = true;
   zoxide.enable = true;
   zsh.enable = true;
+  neovim.enable = true;
 
   home.packages = [
     pkgs.eza
