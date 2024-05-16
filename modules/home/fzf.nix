@@ -13,7 +13,7 @@ in {
     programs.fzf = {
       enable = true;
       enableZshIntegration = lib.mkIf config.zsh.enable;
-      tmux.enbleShellIntegration = lib.mkIf config.tmux.enable;
+      tmux.enableShellIntegration = lib.mkIf config.tmux.enable;
     };
   };
 }
