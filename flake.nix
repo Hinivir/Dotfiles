@@ -98,7 +98,7 @@
       ];
     };
 
-    home-manager = {
+    homeConfigurations = {
       extraSpecialArgs = {inherit inputs;};
       viktor = {
         "viktor" = import ./homes/viktor/home.nix;
