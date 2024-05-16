@@ -3,24 +3,28 @@
   pkgs,
   ...
 }: let
-  inherit (self) pins;
   inherit (pkgs) fetchFromGitHub;
   inherit (pkgs.vimUtils) buildVimPlugin;
 
   sources = {
     hmts = buildVimPlugin {
       name = "hmts.nvim";
-      src = pins."hmts.nvim";
+      src = fetchFromGitHub {
+        owner = "calops";
+        repo = "hmts.nvim";
+        rev = "ba1239972a1f56b94252d4f85a43e777ac419662";
+        hash = "1n67k7kl2xz3zi75h1qb524nxlgvrgwr4ywsykqwz1k7dlkxh3ck";
+      };
     };
 
     smart-splits = buildVimPlugin {
       name = "smart-splits";
-      src = pins."smart-splits.nvim";
-    };
-
-    slides-nvim = buildVimPlugin {
-      name = "slides.nvim";
-      src = pins."slides.nvim";
+      src = fetchFromGitHub {
+        owner = "mrjones2014";
+        repo = "smart-splits.nvim";
+        rev = "f6fcb79527872e9330c554915af2ca511c388390";
+        hash = "0js9l8siaf4hkfpzlzqj89a40xiv2h8wll3jlh4xndpnji6k2vy3";
+      };
     };
 
     regexplainer = buildVimPlugin {
