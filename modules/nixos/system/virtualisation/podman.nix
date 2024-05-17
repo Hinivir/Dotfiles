@@ -5,9 +5,9 @@
   ...
 }: let
   inherit (lib) mkIf mkEnableOption;
-  cfg = config.virtualisation.podman;
+  cfg = config.system.virtualisation.podman;
 in {
-  options.virtualisation.podman = {
+  options.system.virtualisation.podman = {
     enable = mkEnableOption "enable podman";
   };
 

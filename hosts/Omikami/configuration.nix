@@ -27,6 +27,8 @@
     font.enable = true;
 
     time.timeZone = "Europe/Paris";
+
+    virtualisation.docker.enable = true;
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -51,8 +53,6 @@
     };
     GPU.nvidia.enable = true;
   };
-
-  virtualisation.docker.enable = true;
 
   services.xserver.enable = true;
 

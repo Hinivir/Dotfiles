@@ -5,9 +5,9 @@
   ...
 }: let
   inherit (lib) mkIf mkEnableOption;
-  cfg = config.virtualisation.docker;
+  cfg = config.system.virtualisation.docker;
 in {
-  options.virtualisation.docker = {
+  options.system.virtualisation.docker = {
     enable = mkEnableOption "enable docker";
   };
 
