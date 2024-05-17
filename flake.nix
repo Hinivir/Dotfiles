@@ -88,7 +88,6 @@
   };
 
   outputs = {
-    self,
     nixpkgs,
     home-manager,
     ...
@@ -136,7 +135,6 @@
       "public:5MqPjBBGMCWbo8L8voeQl7HXc5oX+MXZ6BSURfMosIo="
     ];
     extra-trusted-users = [
-      "@wheels"
       "viktor"
     ];
   };
