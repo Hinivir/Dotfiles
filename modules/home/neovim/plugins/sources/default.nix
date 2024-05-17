@@ -13,7 +13,7 @@
         owner = "calops";
         repo = "hmts.nvim";
         rev = "ba1239972a1f56b94252d4f85a43e777ac419662";
-        hash = "sha256-1n67k7kl2xz3zi75h1qb524nxlgvrgwr4ywsykqwz1k7dlkxh3ck";
+        sha256 = "1n67k7kl2xz3zi75h1qb524nxlgvrgwr4ywsykqwz1k7dlkxh3ck";
       };
     };
 
@@ -23,7 +23,7 @@
         owner = "mrjones2014";
         repo = "smart-splits.nvim";
         rev = "f6fcb79527872e9330c554915af2ca511c388390";
-        hash = "sha256-0js9l8siaf4hkfpzlzqj89a40xiv2h8wll3jlh4xndpnji6k2vy3";
+        sha256 = "0js9l8siaf4hkfpzlzqj89a40xiv2h8wll3jlh4xndpnji6k2vy3";
       };
     };
 
