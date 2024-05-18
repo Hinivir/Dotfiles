@@ -13,7 +13,7 @@ in {
 
   config = mkIf cfg.enable {
     virtualisation.docker.enable = true;
-    users.users.${config.user}.extraGroups = ["docker"];
+    users.users.viktor.extraGroups = ["docker"];
 
     environment.systemPackages = with pkgs; [
       docker

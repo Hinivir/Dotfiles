@@ -54,6 +54,9 @@
     GPU.nvidia.enable = true;
   };
 
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
   services.xserver.enable = true;
 
   services.displayManager.sddm.enable = true;
@@ -75,6 +78,7 @@
     isNormalUser = true;
     description = "Viktor Bruggeman";
     extraGroups = ["networkmanager" "wheel"];
+    defaultUserShell = pkgs.zsh;
   };
 
   nixpkgs.config.allowUnfree = true;
