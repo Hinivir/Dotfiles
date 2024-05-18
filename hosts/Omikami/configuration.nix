@@ -78,8 +78,10 @@
     isNormalUser = true;
     description = "Viktor Bruggeman";
     extraGroups = ["networkmanager" "wheel"];
-    defaultUserShell = pkgs.zsh;
+    shell = pkgs.zsh;
   };
+
+  users.defaultUserShell = pkgs.zsh;
 
   nixpkgs.config.allowUnfree = true;
 
