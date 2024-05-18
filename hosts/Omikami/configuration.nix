@@ -74,6 +74,8 @@
 
   services.libinput.enable = true;
 
+  programs.zsh.enable = true;
+
   users.users.viktor = {
     isNormalUser = true;
     description = "Viktor Bruggeman";
