@@ -85,11 +85,16 @@
     };
 
     alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
+
+    stylix.url = "github:danth/stylix";
+
+    awesome-neovim-plugins.url = "github:m15a/flake-awesome-neovim-plugins";
   };
 
   outputs = {
     nixpkgs,
     home-manager,
+    stylix,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -100,6 +105,7 @@
       };
       overlays = [
         inputs.alacritty-theme.overlays.default
+        inputs.awesome-neovim-plugins.overlays.default
       ];
     };
   in {
@@ -117,7 +123,10 @@
         modules = [
           ./homes/viktor/home.nix
         ];
-        extraSpecialArgs = {inherit inputs;};
+        extraSpecialArgs = {
+          inherit inputs;
+          inherit stylix;
+        };
       };
     };
   };

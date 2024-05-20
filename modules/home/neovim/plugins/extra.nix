@@ -5,8 +5,11 @@
 }: let
   inherit (pkgs.vimPlugins) friendly-snippets aerial-nvim nvim-surround undotree mkdir-nvim ssr-nvim direnv-vim legendary-nvim;
   pluginSources = import ./sources {inherit self pkgs;};
+  inherit (pkgs.awesomeNeovimPlugins) oxocarbon evergarden;
 in {
   programs.neovim-flake.settings.vim.extraPlugins = {
+    oxocarbon = {package = oxocarbon;};
+    evergarden = {package = evergarden;};
     # plugins that are pulled from nixpkgs
     direnv = {package = direnv-vim;};
     friendly-snippets = {package = friendly-snippets;};

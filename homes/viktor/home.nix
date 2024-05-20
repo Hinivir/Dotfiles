@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   home.username = "viktor";
   home.homeDirectory = "/home/viktor";
 
@@ -7,6 +11,9 @@
   imports = [
     ../../modules/home/default.nix
   ];
+
+  inputs.stylix.polarity = "dark";
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 
   alacritty = {
     enable = true;
