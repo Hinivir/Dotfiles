@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   inputs,
   ...
@@ -71,6 +70,10 @@
   services.desktopManager.plasma6.enable = true;
   #services.desktopManager.cosmic.enable = true;
   #services.displayManager.cosmic-greeter.enable = true;
+
+  services.gnome.gnome-keyring.enable = true;
+  services.gnome.gnome-online-accounts.enable = true;
+  services.gnome.gnome-settings-daemon.enable = true;
 
   services.xserver.xkb = {
     layout = "fr";

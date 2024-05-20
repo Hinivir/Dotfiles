@@ -1,5 +1,5 @@
 {
-  input,
+  inputs,
   config,
   lib,
   pkgs,
@@ -7,30 +7,27 @@
 }: let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.hyprland;
-  inherit (import ./package.nix {inherit input pkgs;}) grimblast hyprshot hyprpicker;
+  inherit (import ./package.nix {inherit inputs pkgs;}) grimblast hyprshot hyprpicker;
 in {
   options.hyprland = {
     enable = mkEnableOption "Enable Hyprland";
   };
 
   config = mkIf cfg.enable {
-    imports = [
-      ./package.nix
-    ];
     home.packages = [
       hyprshot
-      grimblast
-      hyprpicker
+      inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+      inputs.hyprpicker
       pkgs.rofi
       pkgs.wlogout
       pkgs.wl-clipboard
       pkgs.foot
       pkgs.spotify
       pkgs.vesktop
+      pkgs.anyrun
     ];
     wayland.windowManager.hyprland = {
       enable = true;
-      package = input.hyprland.packages.hyprland;
       xwayland.enable = true;
       systemd = {
         enable = true;
@@ -83,14 +80,14 @@ in {
 
         bind = [
           "$MOD, Q, killactive"
-          "$MOD, SUPR, wlogout -p layer-shell"
+          "$MOD, SUPR, exec, wlogout"
           "$MOD, F, fullscreen"
-          "$MOD, V, tooglefloating"
+          "$MOD, V, togglefloating"
           "$MOD, T, togglegroup"
           "$MODSHIFT, G, changegroupactive"
           "$MOD, P, pseudo"
 
-          "$MOD, RETURN, alacritty"
+          "$MOD, RETURN, exec, alacritty"
           "$MOD, W, exec, firefox"
           "$MOD, R, exec, rofi -show drun"
           "$MODSHIFT, R, exec, anyrun"
@@ -168,15 +165,14 @@ in {
           ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
           ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
         ];
+
+        exec-once = [
+          "ags"
+          "hyprctl setcursor ${pkgs.catppuccin-cursors.mochaDark} 15"
+        ];
       };
 
-      exec-once = [
-        "ags"
-        "hyprctl setcursor ${pkgs.catppuccin-cursors.mochaDark} 15"
-      ];
-
       extraConfig = ''
-        monitor= DP-1,preferred, preferred,
       '';
     };
   };

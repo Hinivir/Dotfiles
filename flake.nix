@@ -166,6 +166,7 @@
         inherit pkgs;
         modules = [
           ./homes/viktor/home.nix
+          inputs.hyprland.homeManagerModules.default
         ];
         extraSpecialArgs = {
           inherit inputs;

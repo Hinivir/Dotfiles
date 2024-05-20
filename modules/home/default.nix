@@ -1,6 +1,7 @@
 {
   imports = [
     ./alacritty.nix
+    ./hyprland
     #./firefox.nix
     ./fzf.nix
     ./git.nix

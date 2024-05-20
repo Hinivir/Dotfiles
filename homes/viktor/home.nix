@@ -27,6 +27,8 @@
     pkgs.eza
     pkgs.bat
     pkgs.lazygit
+    pkgs.python3
+    pkgs.gnome.gnome-settings-daemon
   ];
 
   home.file = {};
