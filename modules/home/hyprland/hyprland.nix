@@ -21,8 +21,14 @@ in {
       hyprshot
       grimblast
       hyprpicker
+      pkgs.rofi
+      pkgs.wlogout
+      pkgs.wl-clipboard
+      pkgs.foot
+      pkgs.spotify
+      pkgs.vesktop
     ];
-    programs.hyprland = {
+    wayland.windowManager.hyprland = {
       enable = true;
       package = input.hyprland.packages.hyprland;
       xwayland.enable = true;
