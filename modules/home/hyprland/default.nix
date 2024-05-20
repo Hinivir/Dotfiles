@@ -1,0 +1,6 @@
+{
+  imports = [
+    ./ags
+    ./hyprland.nix
+  ];
+}

@@ -1,8 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   home.username = "viktor";
   home.homeDirectory = "/home/viktor";
 
@@ -11,9 +7,6 @@
   imports = [
     ../../modules/home/default.nix
   ];
-
-  inputs.stylix.polarity = "dark";
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 
   alacritty = {
     enable = true;
@@ -28,6 +21,7 @@
   tmux.enable = true;
   zoxide.enable = true;
   zsh.enable = true;
+  hyprland.enable = true;
 
   home.packages = [
     pkgs.eza

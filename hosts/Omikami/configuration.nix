@@ -10,6 +10,13 @@
     inputs.nixos-cosmic.nixosModules.default
   ];
 
+  stylix = {
+    autoEnable = true;
+    polarity = "dark";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    image = ./../../../Pictures/wall/jMYaGpT.jpeg;
+  };
+
   networking.hostName = "Omikami";
 
   networking.networkmanager.enable = true;

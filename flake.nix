@@ -57,6 +57,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixfmt = {
+      url = "github:nixos/nixfmt";
+      flake = false;
+    };
+
+    # Project shells
+    devshell = {
+      url = "github:numtide/devshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     ags = {
       url = "github:Aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -89,6 +100,38 @@
     stylix.url = "github:danth/stylix";
 
     awesome-neovim-plugins.url = "github:m15a/flake-awesome-neovim-plugins";
+
+    nyxpkgs.url = "github:NotAShelf/nyxpkgs";
+
+    anyrun.url = "github:anyrun-org/anyrun";
+    anyrun-nixos-options = {
+      url = "github:n3oney/anyrun-nixos-options";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+      };
+    };
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
+    hyprpicker.url = "github:hyprwm/hyprpicker";
+
+    hyprpaper = {
+      url = "github:hyprwm/hyprpaper";
+      inputs = {
+        hyprlang.follows = "hyprland/hyprlang";
+        nixpkgs.follows = "hyprland/nixpkgs";
+        systems.follows = "hyprland/systems";
+      };
+    };
+
+    hyprland-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "hyprland/nixpkgs";
+    };
+
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
   };
 
   outputs = {
@@ -114,6 +157,7 @@
       modules = [
         ./hosts/Omikami/configuration.nix
         inputs.home-manager.nixosModules.default
+        inputs.stylix.nixosModules.stylix
       ];
     };
 
@@ -136,12 +180,14 @@
       "https://nix-gaming.cachix.org"
       "https://cosmic.cachix.org/"
       "https://attic.alexghr.me/public"
+      "https://hyprland.cachix.org"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
       "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
       "public:5MqPjBBGMCWbo8L8voeQl7HXc5oX+MXZ6BSURfMosIo="
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
     ];
     extra-trusted-users = [
       "viktor"
