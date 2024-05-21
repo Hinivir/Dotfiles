@@ -29,6 +29,7 @@
     pkgs.lazygit
     pkgs.python3
     pkgs.gnome.gnome-settings-daemon
+    pkgs.awscli2
   ];
 
   home.file = {};
