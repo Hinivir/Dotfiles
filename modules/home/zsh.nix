@@ -23,7 +23,7 @@ in {
           ll = "ls -l";
         }
         (lib.mkIf config.sesh.enable {
-          sesh = "echo 'Sesh is enabled!'";
+          sl = ''sesh connect "$(sesh list -i | gum filter --limit 1 --placeholder 'Pick a sesh' --prompt='⚡')'';
         })
       ];
       initExtra = ''

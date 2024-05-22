@@ -15,7 +15,5 @@ in {
       sesh
       gum
     ];
-    home.shellAlias = {
-    };
   };
 }
