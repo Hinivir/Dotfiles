@@ -15,11 +15,17 @@ in {
       enable = true;
       history.size = 10000;
       history.path = "${config.xdg.dataHome}/zsh/history";
-      shellAliases = {
-        vim = "nvim";
-        nv = "nvim";
-        ls = "ls --color";
-      };
+      shellAliases = lib.mkMerge [
+        {
+          vim = "nvim";
+          nv = "nvim";
+          ls = "ls --color=auto";
+          ll = "ls -l";
+        }
+        (lib.mkIf config.sesh.enable {
+          sesh = "echo 'Sesh is enabled!'";
+        })
+      ];
       initExtra = ''
         bindkey -e
 

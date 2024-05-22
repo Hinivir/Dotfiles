@@ -16,7 +16,6 @@ in {
       gum
     ];
     home.shellAlias = {
-      slist = ''sesh connect "$(sesh list -i | gum filter --limit 1 --placeholder 'Pick a sesh' --prompt='⚡')"'';
     };
   };
 }
