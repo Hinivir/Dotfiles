@@ -7,6 +7,7 @@
     ./git.nix
     #./gpg.nix
     ./neovim
+    ./sesh.nix
     ./tmux.nix
     ./zoxide.nix
     ./zsh.nix

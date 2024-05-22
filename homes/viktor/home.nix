@@ -22,6 +22,7 @@
   zoxide.enable = true;
   zsh.enable = true;
   hyprland.enable = true;
+  sesh.enable = true;
 
   home.packages = [
     pkgs.eza
