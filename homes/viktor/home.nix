@@ -27,9 +27,13 @@
   home.packages = [
     pkgs.eza
     pkgs.bat
+    pkgs.fd
+    pkgs.ripgrep
+    pkgs.jq
     pkgs.lazygit
     pkgs.python3
     pkgs.gnome.gnome-settings-daemon
+    pkgs.google-chrome
     pkgs.awscli2
   ];
 

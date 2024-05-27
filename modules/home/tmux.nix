@@ -60,6 +60,10 @@ in {
         yank
         sensible
         vim-tmux-navigator
+        fzf-tmux-url
+        resurrect
+        continuum
+        battery
       ];
 
       extraConfig = ''
@@ -101,6 +105,8 @@ in {
         set -g @tokyo-night-tmux_window_id_style hsquare
         set -g @tokyo-night-tmux_show_datetime 0
 
+        set -g status-position top
+
         run-shell ${tokyo-night}/share/tmux-plugins/tokyo-night/tokyo-night.tmux
 
         # set vi-mode
@@ -114,7 +120,19 @@ in {
         bind '"' split-window -v -c "#{pane_current_path}"
         bind % split-window -h -c "#{pane_current_path}"
         bind c new-window -c "#{pane_current_path}"
-        bind-key "K" display-popup -E -w 40% "sesh connect \"$(sesh list -i | gum filter --limit 1 --placeholder 'Pick a sesh' --prompt='⚡')
+
+        bind-key "J" run-shell "sesh connect \"$(
+          sesh list -i | fzf-tmux -p 55%,60% \
+            --no-sort --border-label ' sesh ' --prompt '⚡  ' \
+            --header '  ^a all ^t tmux ^x zoxide ^g config ^d tmux kill ^f find' \
+            --bind 'tab:down,btab:up' \
+            --bind 'ctrl-a:change-prompt(⚡  )+reload(sesh list -i)' \
+            --bind 'ctrl-t:change-prompt(🪟  )+reload(sesh list -it)' \
+            --bind 'ctrl-g:change-prompt(⚙️  )+reload(sesh list -ic)' \
+            --bind 'ctrl-x:change-prompt(📁  )+reload(sesh list -iz)' \
+            --bind 'ctrl-f:change-prompt(🔎  )+reload(fd -H -d 2 -t d -E .Trash . ~)' \
+            --bind 'ctrl-d:execute(tmux kill-session -t {})+change-prompt(⚡  )+reload(sesh list)'
+          )\"
       '';
     };
   };
