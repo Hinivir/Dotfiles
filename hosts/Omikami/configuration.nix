@@ -115,5 +115,7 @@
 
   services.openssh.enable = true;
 
+  nix.trustedUsers = [ "root" "@wheel" ];
+
   system.stateVersion = "23.11";
 }

@@ -128,11 +128,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1716744053,
-        "narHash": "sha256-9YXZWnzsdTxFamlR4LeOXUEVRane0Fvb5d7WZ14aeQ8=",
+        "lastModified": 1716830660,
+        "narHash": "sha256-nHIP8Xmli9mJkBM3fwamrs2+rKj4ool5aG9BbSKuhqw=",
         "owner": "m15a",
         "repo": "flake-awesome-neovim-plugins",
-        "rev": "2f47beb180d6791cd8ca7608314e91e6af5d6768",
+        "rev": "1b3f1a1f3df0c3bacb54d39ba7247957fb410b65",
         "type": "github"
       },
       "original": {

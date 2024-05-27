@@ -35,6 +35,7 @@
     pkgs.gnome.gnome-settings-daemon
     pkgs.google-chrome
     pkgs.awscli2
+    pkgs.vscode
   ];
 
   home.file = {};

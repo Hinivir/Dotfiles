@@ -175,6 +175,7 @@
       };
     };
   };
+
   nixConfig = {
     extra-substituters = [
       "https://nix-community.cachix.org"
@@ -190,8 +191,7 @@
       "public:5MqPjBBGMCWbo8L8voeQl7HXc5oX+MXZ6BSURfMosIo="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
     ];
-    extra-trusted-users = [
-      "viktor"
-    ];
+
+    trusted-users = ["root" "@wheel" ];
   };
 }

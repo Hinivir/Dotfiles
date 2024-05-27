@@ -1,12 +1,6 @@
-{
-  inputs,
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{ inputs, ... }: {
   imports = [
-    inputs.nvf.homeManagerModules.default
+    inputs.neovim-flake.homeManagerModules.default
   ];
 
   programs.neovim-flake = {
@@ -19,108 +13,90 @@
           name = "catppuccin";
           style = "mocha";
         };
-      };
 
-      autocomplete = {
-        enable = true;
-        mappings.scrollDocsUp = "<C-b>";
-      };
+        languages = {
+          nix = {
+            enable = true;
+            lsp.enable = true;
+            extraDiagnostics.enable = true;
+            format.enable = true;
+            treesitter.enable = true;
+          };
 
-      binds = {
-        cheatsheet.enable = true;
-        whichKey.enable = true;
-      };
+          rust = {
+            enable = true;
+            lsp.enable = true;
+            treesitter.enable = true;
+          };
 
-      comments.comment-nvim.enable = true;
-      debugger.nvim-dap = {
-        enable = true;
-        ui.enable = true;
-      };
+          clang = {
+            enable = true;
+            lsp.enable = true;
+            treesitter.enable = true;
+            dap.enable = true;
+            cHeader = true;
+          };
 
-      autopairs.enable = true;
+          ts = {
+            enable = true;
+            lsp.enable = true;
+            treesitter.enable = true;
+            format.enable = true;
+          };
 
-      statusline.lualine = {
-        enable = true;
-      };
-      dashboard.startify = {
-        enable = true;
-      };
+          python = {
+            enable = true;
+            lsp.enable = true;
+            treesitter.enable = true;
+            format.enable = true;
+          };
 
-      notify.nvim-notify.enable = true;
+          markdown = {
+            enable = true;
+            lsp.enable = true;
+            treesitter.enable = true;
+            format.enable = true;
+          };
 
-      telescope.enable = true;
-      terminal.toggleterm = {
-        enable = true;
-        lazygit.enable = true;
-      };
+          html = {
+            enable = true;
+            treesitter.enable = true;
+          };
 
-      ui = {
-        noice.enable = true;
-      };
+          lua = {
+            enable = true;
+            lsp.enable = true;
+            treesitter.enable = true;
+          };
 
-      git.enable = true;
-
-      languages = {
-	      nix = {
-          enable = true;
-          lsp.enable = true;
-          extraDiagnostics.enable = true;
-          format.enable = true;
-          tressitter.enable = true;
+          enableFormat = true;
+          enableLSP = true;
+          enableTreesitter = true;
         };
 
-        rust = {
-          enable = true;
-          lsp.enable = true;
-          tressitter.enable = true;
+        binds = {
+          cheatsheet.enable = true;
+          whichKey.enable = true;
         };
 
-        clang = {
+        filetree.nvimTree.enable = true;
+
+        telescope.enable = true;
+
+        notify.nvim-notify.enable = true;
+
+        terminal.toggleterm = {
           enable = true;
-          lsp.enable = true;
-          tressitter.enable = true;
-          dap.enable = true;
-          cHeader.enable = true;
+          lazygit.enable = true;
         };
 
-	      ts = {
+        statusline.lualine = {
           enable = true;
-          lsp.enable = true;
-          tressitter.enable = true;
-          format.enable = true;
         };
 
-	      python = {
-          enable = true;
-          lsp.enable = true;
-          tressitter.enable = true;
-          format.enable = true;
+        ui = {
+          noice.enable = true;
         };
-
-        markdown = {
-          enable = true;
-          lsp.enable = true;
-          tressitter.enable = true;
-          format.enable = true;
-        };
-
-	      html = {
-          enable = true;
-          lsp.enable = true;
-          tressitter.enable = true;
-          format.enable = true;
-        };
-
-        lua = {
-          enable = true;
-          lsp.enable = true;
-          tressitter.enable = true;
-          format.enable = true;
-        };
-
-        enableFormat = true;
-        enableLSP = true;
-        enableTreesitter = true;
       };
     };
   };
