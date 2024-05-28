@@ -1,4 +1,8 @@
-{ inputs, ... }: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     inputs.neovim-flake.homeManagerModules.default
   ];
@@ -74,6 +78,8 @@
           enableTreesitter = true;
         };
 
+        autopairs.enable = true;
+
         binds = {
           cheatsheet.enable = true;
           whichKey.enable = true;
@@ -96,6 +102,50 @@
 
         ui = {
           noice.enable = true;
+        };
+
+        extraPlugins = with pkgs.vimPlugins; {
+          hover = {
+            package = hover-nvim;
+            setup = ''
+              require("hover").setup {
+                    init = function()
+                        -- Require providers
+                        require("hover.providers.lsp")
+                        require('hover.providers.gh')
+                        require('hover.providers.gh_user')
+                        require('hover.providers.jira')
+                        -- require('hover.providers.dap')
+                        require('hover.providers.man')
+                        require('hover.providers.dictionary')
+                    end,
+                    preview_opts = {
+                        border = 'single'
+                    },
+                    -- Whether the contents of a currently open hover window should be moved
+                    -- to a :h preview-window when pressing the hover keymap.
+                    preview_window = false,
+                    title = true,
+                    mouse_providers = {
+                        'LSP'
+                    },
+                    mouse_delay = 1000
+                }
+            '';
+          };
+        };
+
+        maps.normal = {
+          "<leader>hh" = {
+            action = "<cmd>lua require('hover').hover()<CR>";
+            silent = true;
+            desc = "hover.nvim";
+          };
+          "<leader>hg" = {
+            action = "<cmd>lua require('hover').hover_select()<CR>";
+            silent = true;
+            desc = "hover.nvim (select)";
+          };
         };
       };
     };

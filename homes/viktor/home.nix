@@ -37,6 +37,9 @@
     pkgs.awscli2
     pkgs.vscode
     pkgs.bottles
+    pkgs.gh
+    pkgs.jira-cli-go
+    pkgs.prismlauncher
   ];
 
   home.file = {};
