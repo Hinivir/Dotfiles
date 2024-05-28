@@ -36,6 +36,7 @@
     pkgs.google-chrome
     pkgs.awscli2
     pkgs.vscode
+    pkgs.bottles
   ];
 
   home.file = {};
