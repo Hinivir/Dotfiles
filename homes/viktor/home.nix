@@ -40,6 +40,9 @@
     pkgs.gh
     pkgs.jira-cli-go
     pkgs.prismlauncher
+
+    # formater
+    pkgs.alejandra
   ];
 
   home.file = {};

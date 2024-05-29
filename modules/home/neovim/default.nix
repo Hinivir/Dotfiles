@@ -89,6 +89,12 @@
 
         telescope.enable = true;
 
+        mouseSupport = "a";
+
+        notes = {
+            todo-comment.enable = true;
+        };
+
         notify.nvim-notify.enable = true;
 
         terminal.toggleterm = {
@@ -171,6 +177,16 @@
             action = "<cmd>lua require('hover').hover_select()<CR>";
             silent = true;
             desc = "hover.nvim (select)";
+          };
+          "<leader>nn" = {
+            action = "<cmd> Neotree position=left toggle";
+            silent = true;
+            desc = "Open Neotree left";
+          };
+          "<leader>nf" = {
+            action = "<cmd> Neotree focus";
+            silent = true;
+            desc = "Focus Neotree";
           };
         };
       };
