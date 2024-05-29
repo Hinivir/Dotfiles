@@ -78,11 +78,24 @@
           enableTreesitter = true;
         };
 
+        autocomplete = {
+          enable = true;
+          mappings = {
+            complete = "<C-Y>";
+            next = "<C-n>";
+            previous = "<C-p>";
+          };
+        };
+
         autopairs.enable = true;
+
+        git.enable = true;
 
         binds = {
           cheatsheet.enable = true;
-          whichKey.enable = true;
+          whichKey = {
+            enable = true;
+          };
         };
 
         filetree.nvimTree.enable = false;
@@ -92,7 +105,7 @@
         mouseSupport = "a";
 
         notes = {
-            todo-comments.enable = true;
+          todo-comments.enable = true;
         };
 
         notify.nvim-notify.enable = true;
@@ -178,13 +191,14 @@
             silent = true;
             desc = "hover.nvim (select)";
           };
-          "<leader>nn" = {
-            action = "<cmd> Neotree position=left toggle";
+          # BUG: bug
+          "<leader>dn" = {
+            action = "<cmd> Neotree position=left toggle<CR>";
             silent = true;
             desc = "Open Neotree left";
           };
-          "<leader>nf" = {
-            action = "<cmd> Neotree focus";
+          "<leader>df" = {
+            action = "<cmd> Neotree focus<CR>";
             silent = true;
             desc = "Focus Neotree";
           };
