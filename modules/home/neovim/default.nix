@@ -147,9 +147,16 @@
           };
 
           neo-tree = {
-            package = pkgs.awesomeNeovimPlugins.neo-tree.nvim;
+            package = pkgs.awesomeNeovimPlugins.neo-tree-nvim;
             setup = ''
 
+            '';
+          };
+
+          edgy = {
+            package = pkgs.vimPlugins.edgy-nvim;
+            setup = ''
+              require("edgy").setup(opts?)
             '';
           };
         };
