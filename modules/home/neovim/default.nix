@@ -92,7 +92,7 @@
         mouseSupport = "a";
 
         notes = {
-            todo-comment.enable = true;
+            todo-comments.enable = true;
         };
 
         notify.nvim-notify.enable = true;
