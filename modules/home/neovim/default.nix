@@ -85,7 +85,7 @@
           whichKey.enable = true;
         };
 
-        filetree.nvimTree.enable = true;
+        filetree.nvimTree.enable = false;
 
         telescope.enable = true;
 
@@ -104,9 +104,9 @@
           noice.enable = true;
         };
 
-        extraPlugins = with pkgs.vimPlugins; {
+        extraPlugins = {
           hover = {
-            package = hover-nvim;
+            package = pkgs.vimPlugins.hover-nvim;
             setup = ''
               require("hover").setup {
                     init = function()
@@ -131,6 +131,25 @@
                     },
                     mouse_delay = 1000
                 }
+            '';
+          };
+
+          plenary = {
+            package = pkgs.vimPlugins.plenary-nvim;
+          };
+
+          nvim-web-devicons = {
+            package = pkgs.vimPlugins.nvim-web-devicons;
+          };
+
+          nui = {
+            package = pkgs.vimPlugins.nui-nvim;
+          };
+
+          neo-tree = {
+            package = pkgs.awesomeNeovimPlugins.neo-tree.nvim;
+            setup = ''
+
             '';
           };
         };
