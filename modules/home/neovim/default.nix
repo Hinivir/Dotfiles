@@ -11,6 +11,9 @@
     enable = true;
     settings = {
       vim = {
+        extraLuaFiles = [
+          ./settings.lua
+        ];
         useSystemClipboard = true;
         theme = {
           enable = true;

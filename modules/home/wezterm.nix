@@ -19,11 +19,12 @@ in {
 
         local config = {}
 
-        wezterm.font("JetBrainsMono Nerd Font"),
+        wezterm.font("JetBrainsMono Nerd Font")
         config.window_frame = { font_size = 16.0, }
-        config.color_scheme = "Catppuccin Mocha",
+        config.color_scheme = "Catppuccin Mocha"
         config.hide_tab_bar_if_only_one_tab = true
-        config.use_fancy_tab = true
+        config.use_fancy_tab_bar = false
+        config.tab_bar_at_bottom = true
         config.window_decorations = "RESIZE"
 
         return config
