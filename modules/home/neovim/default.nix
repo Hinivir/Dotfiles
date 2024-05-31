@@ -80,14 +80,33 @@
 
         autocomplete = {
           enable = true;
+          type = "nvim-cmp";
           mappings = {
-            complete = "<C-Y>";
+            confirm = "<C-y>";
             next = "<C-n>";
             previous = "<C-p>";
           };
         };
 
         autopairs.enable = true;
+
+        comments.comment-nvim.enable = true;
+
+        dashboard = {
+          alpha.enable = true;
+        };
+
+        lsp = {
+          formatOnSave = true;
+          lspkind.enable = true;
+          lsplines.enable = true;
+          lightbulb.enable = true;
+          lspsaga.enable = false;
+          lspSignature.enable = true;
+          nvimCodeActionMenu.enable = true;
+          trouble.enable = false;
+          nvim-docs-view.enable = true;
+        };
 
         git.enable = true;
 
@@ -99,6 +118,8 @@
         };
 
         filetree.nvimTree.enable = false;
+
+        presence.neocord.enable = true;
 
         telescope.enable = true;
 
@@ -113,14 +134,21 @@
         terminal.toggleterm = {
           enable = true;
           lazygit.enable = true;
+          mappings.open = "<C-t>";
         };
 
         statusline.lualine = {
           enable = true;
+          theme = "catppuccin";
         };
 
         ui = {
           noice.enable = true;
+        };
+
+        visuals = {
+          enable = true;
+          nvimWebDevicons.enable = true;
         };
 
         extraPlugins = {
@@ -175,7 +203,12 @@
           edgy = {
             package = pkgs.vimPlugins.edgy-nvim;
             setup = ''
-              require("edgy").setup(opts?)
+            '';
+          };
+
+          eagle = {
+            package = pkgs.awesomeNeovimPlugins.eagle-nvim;
+            setup = ''
             '';
           };
         };
@@ -191,13 +224,12 @@
             silent = true;
             desc = "hover.nvim (select)";
           };
-          # BUG: bug
-          "<leader>dn" = {
+          "<leader>nn" = {
             action = "<cmd> Neotree position=left toggle<CR>";
             silent = true;
             desc = "Open Neotree left";
           };
-          "<leader>df" = {
+          "<leader>nf" = {
             action = "<cmd> Neotree focus<CR>";
             silent = true;
             desc = "Focus Neotree";

@@ -1,14 +1,16 @@
-{ config, lib, pkgs, ... }:
-
-let
-  cfg = config.system.boot;
-in
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  cfg = config.system.boot;
+in {
   options.system.boot = {
     enable = lib.mkEnableOption "Enable boot loader";
 
     bootloader = lib.mkOption {
-      type = lib.types.enum [ "grub" "systemd-boot" ];
+      type = lib.types.enum ["grub" "systemd-boot"];
       default = "grub";
       description = "The bootloader to use.";
     };

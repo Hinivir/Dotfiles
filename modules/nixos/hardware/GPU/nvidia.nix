@@ -1,6 +1,9 @@
-{ lib, config, pkgs, ... }: 
-
-let
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: let
   cfg = config.hardware.GPU.nvidia;
 in {
   options.hardware.GPU.nvidia = {

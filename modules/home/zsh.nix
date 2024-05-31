@@ -11,6 +11,10 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    programs.direnv = {
+      enable = true;
+      enableZshIntegration = true;
+    };
     programs.zsh = {
       enable = true;
       history.size = 10000;
@@ -21,10 +25,8 @@ in {
           nv = "nvim";
           ls = "ls --color=auto";
           ll = "ls -l";
+          sl = "sesh connect $(sesh list -i | gum filter --limit 1 --placeholder 'Pick a sesh' --prompt='⚡')";
         }
-        (lib.mkIf config.sesh.enable {
-          sl = ''sesh connect "$(sesh list -i | gum filter --limit 1 --placeholder 'Pick a sesh' --prompt='⚡')'';
-        })
       ];
       initExtra = ''
         bindkey -e

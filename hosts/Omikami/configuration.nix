@@ -63,14 +63,15 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
-  services.xserver.enable = true;
-  services.xserver.displayManager.sddm.wayland.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-  services.desktopManager.plasma6.enable = true;
-  #services.desktopManager.cosmic.enable = true;
-  #services.displayManager.cosmic-greeter.enable = true;
-
+  services = {
+    xserver.enable = true;
+    xserver.displayManager.sddm.wayland.enable = true;
+    #displayManager.sddm.enable = true;
+    #displayManager.sddm.wayland.enable = true;
+    desktopManager.plasma6.enable = true;
+    desktopManager.cosmic.enable = true;
+    displayManager.cosmic-greeter.enable = true;
+  };
   services.gnome.gnome-keyring.enable = true;
   services.gnome.gnome-online-accounts.enable = true;
   services.gnome.gnome-settings-daemon.enable = true;
@@ -115,7 +116,7 @@
 
   services.openssh.enable = true;
 
-  nix.trustedUsers = [ "root" "@wheel" ];
+  nix.trustedUsers = ["root" "@wheel"];
 
   system.stateVersion = "23.11";
 }

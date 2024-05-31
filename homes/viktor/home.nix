@@ -1,8 +1,9 @@
 {pkgs, ...}: {
-  home.username = "viktor";
-  home.homeDirectory = "/home/viktor";
-
-  home.stateVersion = "23.11";
+  home = {
+    username = "viktor";
+    homeDirectory = "/home/viktor";
+    stateVersion = "23.11";
+  };
 
   imports = [
     ../../modules/home/default.nix
@@ -23,6 +24,7 @@
   zsh.enable = true;
   hyprland.enable = true;
   sesh.enable = true;
+  wezterm.enable = true;
 
   home.packages = [
     pkgs.eza
@@ -40,6 +42,10 @@
     pkgs.gh
     pkgs.jira-cli-go
     pkgs.prismlauncher
+    pkgs.jdk8
+    pkgs.postman
+    pkgs.spotify-player
+    pkgs.spotifyd
 
     # formater
     pkgs.alejandra

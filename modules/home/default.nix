@@ -9,6 +9,7 @@
     ./neovim
     ./sesh.nix
     ./tmux.nix
+    ./wezterm.nix
     ./zoxide.nix
     ./zsh.nix
   ];

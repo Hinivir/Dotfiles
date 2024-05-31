@@ -1,12 +1,15 @@
-{ lib, config, pkgs, ... }: 
-
-let
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: let
   cfg = config.hardware.sound;
 in {
   options.hardware.sound = {
     enable = lib.mkEnableOption "Enable sound support";
     use = lib.mkOption {
-      type = lib.types.enum [ "pulseaudio" "pipewire" ];
+      type = lib.types.enum ["pulseaudio" "pipewire"];
       default = "pipewire";
       description = "Select the sound system to use";
     };
@@ -24,5 +27,4 @@ in {
       jack.enable = true;
     };
   };
-
 }
