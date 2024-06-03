@@ -76,6 +76,16 @@
   services.gnome.gnome-online-accounts.enable = true;
   services.gnome.gnome-settings-daemon.enable = true;
 
+  services.ollama = {
+    enable = true;
+    acceleration = "cuda";
+    sandbox = true;
+  };
+
+  programs.steam = {
+    enable = true;
+  };
+
   services.xserver.xkb = {
     layout = "fr";
     variant = "";

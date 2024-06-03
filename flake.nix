@@ -101,6 +101,9 @@
 
     awesome-neovim-plugins.url = "github:m15a/flake-awesome-neovim-plugins";
 
+    jerry.url = "github:justchokingaround/jerry";
+    lobster.url = "github:justchokingaround/lobster";
+
     nyxpkgs.url = "github:NotAShelf/nyxpkgs";
 
     anyrun.url = "github:anyrun-org/anyrun";
@@ -110,6 +113,8 @@
         flake-parts.follows = "flake-parts";
       };
     };
+
+    # Hyprland
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     hyprpicker.url = "github:hyprwm/hyprpicker";
@@ -192,6 +197,6 @@
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
     ];
 
-    trusted-users = ["root" "@wheel" ];
+    trusted-users = ["root" "@wheel"];
   };
 }
