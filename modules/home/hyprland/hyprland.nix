@@ -180,7 +180,7 @@ in {
   programs.anyrun = {
     enable = true;
     config = {
-      plugins = with inputs'.anyrun.packages; [
+      plugins = with inputs.anyrun.packages; [
         applications
         rink
         translate
@@ -189,7 +189,7 @@ in {
         symbols
         translate
 
-        inputs'.anyrun-nixos-options.packages.default
+        inputs.anyrun-nixos-options.packages.default
       ];
 
       # the x coordinate of the runner
