@@ -179,14 +179,14 @@ in {
     programs.anyrun = {
       enable = true;
       config = {
-        plugins = with inputs.anyrun.packages; [
-          applications
-          rink
-          translate
-          randr
-          shell
-          symbols
-          translate
+        plugins = [
+          inputs.anyrun.packages.${pkgs.system}.applications
+          inputs.anyrun.packages.${pkgs.system}.rink
+          inputs.anyrun.packages.${pkgs.system}.translate
+          inputs.anyrun.packages.${pkgs.system}.randr
+          inputs.anyrun.packages.${pkgs.system}.shell
+          inputs.anyrun.packages.${pkgs.system}.symbols
+          inputs.anyrun.packages.${pkgs.system}.translate
 
           inputs.anyrun-nixos-options.packages.default
         ];
