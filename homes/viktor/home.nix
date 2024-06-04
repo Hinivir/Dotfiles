@@ -46,6 +46,8 @@
     pkgs.postman
     pkgs.spotify-player
     pkgs.spotifyd
+    pkgs.qutebrowser
+    pkgs.jetbrains.webstorm
 
     # formater
     pkgs.alejandra
