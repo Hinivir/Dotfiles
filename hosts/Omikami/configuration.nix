@@ -79,12 +79,13 @@
   services.ollama = {
     enable = true;
     acceleration = "cuda";
-    sandbox = true;
   };
 
   programs.steam = {
     enable = true;
   };
+
+  programs.nix-ld.enable = true;
 
   services.xserver.xkb = {
     layout = "fr";
