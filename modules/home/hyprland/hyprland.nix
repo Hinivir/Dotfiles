@@ -94,7 +94,7 @@ in {
           "$MODSHIFT, G, changegroupactive"
           "$MOD, P, pseudo"
 
-          "$MOD, RETURN, exec, [float;tile] wezterm start --always-new-process"
+          "$MOD, RETURN, exec, footclient"
           "$MOD, W, exec, firefox"
           "$MOD, R, exec, rofi -show drun"
           "$MODSHIFT, R, exec, anyrun"
@@ -177,6 +177,7 @@ in {
         exec-once = [
           "ags"
           "hyprctl setcursor ${pkgs.catppuccin-cursors.mochaDark} 15"
+          "foot --server"
         ];
       };
 
