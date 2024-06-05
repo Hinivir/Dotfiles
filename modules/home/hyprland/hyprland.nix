@@ -7,8 +7,12 @@
 }: let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.hyprland;
-  inherit (import ./package.nix {inherit inputs pkgs;}) grimblast hyprshot hyprpicker;
+  inherit (import ./package.nix {inherit inputs pkgs;}) grimblast hyprshot hyprpicker dbus-hyprland-env;
 in {
+  imports = [
+    inputs.anyrun.homeManagerModules.default
+  ];
+
   options.hyprland = {
     enable = mkEnableOption "Enable Hyprland";
   };
@@ -16,16 +20,20 @@ in {
   config = mkIf cfg.enable {
     home.packages = [
       hyprshot
+      dbus-hyprland-env
       inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
       inputs.hyprpicker
       pkgs.xdg-desktop-portal-hyprland
-      pkgs.rofi
+      pkgs.xdg-desktop-portal-wlr
+      pkgs.rofi-wayland
       pkgs.wlogout
       pkgs.wl-clipboard
       pkgs.foot
       pkgs.spotify
       pkgs.vesktop
-      pkgs.anyrun
+      pkgs.brightnessctl
+      pkgs.networkmanagerapplet
+      pkgs.blueman
     ];
     wayland.windowManager.hyprland = {
       enable = true;
@@ -54,7 +62,7 @@ in {
 
         misc = {
           enable_swallow = true;
-          swallow_regex = "Alacritty|foot";
+          swallow_regex = "Alacritty|foot|Wezterm";
         };
 
         windowrulev2 = [
@@ -93,6 +101,7 @@ in {
           "$MOD, R, exec, rofi -show drun"
           "$MODSHIFT, R, exec, anyrun"
           "$MOD, D, exec, dolphin"
+          "$MOD, M, exec, ags -t music"
 
           "$MODSHIFT, right, movetoworkspace,+1" # move focused window to the next ws
           "$MODSHIFT, left, movetoworkspace,-1" # move focused window to the previous ws
@@ -107,7 +116,7 @@ in {
 
           # screenshot and receording binds
           ''$MODSHIFT, P, exec, grim - | wl-copy --type image/png && notify-send "Screenshot" "Screenshot copied to clipboard"; $enable''
-          "$MODSHIFT, S, exec, hyprshot" # screenshot and then pipe it to swappy
+          "$MODSHIFT, O, exec, hyprshot" # screenshot and then pipe it to swappy
           "$MOD, Print, exec, grimblast --notify --cursor copysave output" # copy all active outputs
           "$ALTSHIFT, S, exec, grimblast --notify --cursor copysave screen" # copy active screen
           "$ALTSHIFT, R, exec, grimblast --notify --cursor copysave area" # copy selection area
@@ -174,21 +183,20 @@ in {
       };
 
       extraConfig = ''
+        monitor = eDP-1,2240x1400@60,auto,1
       '';
     };
     programs.anyrun = {
       enable = true;
       config = {
         plugins = [
-          inputs.anyrun.packages.${pkgs.system}.applications
+          #inputs.anyrun.packages.${pkgs.system}.applications
           inputs.anyrun.packages.${pkgs.system}.rink
           inputs.anyrun.packages.${pkgs.system}.translate
-          inputs.anyrun.packages.${pkgs.system}.randr
+          #inputs.anyrun.packages.${pkgs.system}.randr
           inputs.anyrun.packages.${pkgs.system}.shell
           inputs.anyrun.packages.${pkgs.system}.symbols
           inputs.anyrun.packages.${pkgs.system}.translate
-
-          inputs.anyrun-nixos-options.packages.default
         ];
 
         # the x coordinate of the runner
@@ -217,50 +225,6 @@ in {
 
         # Limit amount of entries shown in total
         maxEntries = 10;
-      };
-
-      extraConfigFiles = {
-        "applications.ron".text = ''
-          Config(
-            // Also show the Desktop Actions defined in the desktop files, e.g. "New Window" from LibreWolf
-            desktop_actions: true,
-            max_entries: 10,
-            // The terminal used for running terminal based desktop entries, if left as `None` a static list of terminals is used
-            // to determine what terminal to use.
-            terminal: Some("foot"),
-          )
-        '';
-
-        "randr.ron".text = ''
-          Config(
-            prefix: ":ra",
-            max_entries: 5,
-          )
-        '';
-
-        "symbols.ron".text = ''
-          Config(
-            // The prefix that the search needs to begin with to yield symbol results
-            prefix: ":sy",
-
-            // Custom user defined symbols to be included along the unicode symbols
-            symbols: {
-              // "name": "text to be copied"
-              "shrug": "¯\\_(ツ)_/¯",
-            },
-
-            // The number of entries to be displayed
-            max_entries: 5,
-          )
-        '';
-
-        "translate.ron".text = ''
-          Config(
-            prefix: ":tr",
-            language_delimiter: ">",
-            max_entries: 3,
-          )
-        '';
       };
     };
   };

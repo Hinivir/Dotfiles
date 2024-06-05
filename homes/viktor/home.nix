@@ -48,6 +48,7 @@
     pkgs.spotifyd
     pkgs.qutebrowser
     pkgs.jetbrains.webstorm
+    pkgs.bun
 
     # formater
     pkgs.alejandra

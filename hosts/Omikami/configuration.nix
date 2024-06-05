@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }: {
   imports = [
@@ -72,9 +73,36 @@
     desktopManager.cosmic.enable = true;
     displayManager.cosmic-greeter.enable = true;
   };
-  services.gnome.gnome-keyring.enable = true;
-  services.gnome.gnome-online-accounts.enable = true;
   services.gnome.gnome-settings-daemon.enable = true;
+  services.udev.packages = with pkgs; [
+    gnome.gnome-settings-daemon
+  ];
+  services.gnome = {
+    glib-networking.enable = true;
+    evolution-data-server.enable = true;
+
+    # optional to use google/nextcloud calendar
+    gnome-online-accounts.enable = true;
+
+    # optional to use google/nextcloud calendar
+    gnome-keyring.enable = true;
+
+    gnome-remote-desktop.enable = lib.mkForce false;
+  };
+
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    config = {
+      common.default = ["gtk"];
+      hyprland.default = ["gtk" "hyprland"];
+    };
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-wlr
+      pkgs.xdg-desktop-portal-hyprland
+    ];
+  };
 
   services.ollama = {
     enable = true;
