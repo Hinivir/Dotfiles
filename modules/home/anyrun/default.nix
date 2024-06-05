@@ -24,7 +24,7 @@ in {
       showResultsImmediately = false;
       maxEntries = 10;
 
-      plugins = with packages; [
+      plugins = with anyrun.packages.${pkgs.system}; [
         applications
         rink
         symbols
