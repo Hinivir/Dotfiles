@@ -17,8 +17,8 @@ in {
   config = lib.mkIf cfg.enable {
     programs.spicetify = {
       enable = true;
-      theme = spicePkgs.theme.catppuccin;
-      colorscheme = "mocha";
+      theme = spicePkgs.themes.catppuccin;
+      colorScheme = "mocha";
       enabledExtensions = with spicePkgs.extensions; [
         powerBar
         playlistIcons

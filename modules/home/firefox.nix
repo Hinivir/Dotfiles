@@ -6,7 +6,7 @@
 }: let
   cfg = config.firefox;
 in {
-  options.sesh = {
+  options.firefox = {
     enable = lib.mkEnableOption "Enable firefox";
   };
 

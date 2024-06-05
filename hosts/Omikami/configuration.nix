@@ -146,7 +146,6 @@
     curl
     htop
     fastfetch
-    firefox
     direnv
     neovim
     nh

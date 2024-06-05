@@ -52,6 +52,8 @@
     pkgs.qutebrowser
     pkgs.jetbrains.webstorm
     pkgs.bun
+    pkgs.xfce.thunar
+    pkgs.swww
 
     # formater
     pkgs.alejandra
