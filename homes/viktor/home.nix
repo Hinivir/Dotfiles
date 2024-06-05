@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   home = {
     username = "viktor";
     homeDirectory = "/home/viktor";
@@ -54,9 +58,13 @@
     pkgs.bun
     pkgs.xfce.thunar
     pkgs.swww
+    pkgs.mpv
+    inputs.jerry.packages.${pkgs.system}.jerry
+    inputs.lobster.packages.${pkgs.system}.lobster
 
     # formater
     pkgs.alejandra
+    pkgs.deadnix
   ];
 
   home.file = {};

@@ -11,10 +11,38 @@
   ];
 
   stylix = {
-    autoEnable = true;
     polarity = "dark";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     image = ./../../../Pictures/wall/jMYaGpT.jpeg;
+    fonts = {
+      serif = {
+        package = pkgs.monaspace;
+        name = "Monaspace Neon";
+      };
+      sansSerif = {
+        package = pkgs.monaspace;
+        name = "Monaspace Neon";
+      };
+      monospace = {
+        package = pkgs.iosevka-comfy.comfy;
+        name = "Iosevka Comfy";
+      };
+      emoji = {
+        package = pkgs.noto-fonts-emoji;
+        name = "Noto Color Emoji";
+      };
+      sizes = {
+        applications = 13;
+        desktop = 12;
+        popups = 14;
+        terminal = 16;
+      };
+    };
+    cursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
+      size = 22;
+    };
   };
 
   networking.hostName = "Omikami";
@@ -109,12 +137,6 @@
     acceleration = "cuda";
   };
 
-  programs.steam = {
-    enable = true;
-  };
-
-  programs.nix-ld.enable = true;
-
   services.xserver.xkb = {
     layout = "fr";
     variant = "";
@@ -124,7 +146,11 @@
 
   services.libinput.enable = true;
 
-  programs.zsh.enable = true;
+  programs = {
+    zsh.enable = true;
+    nix-ld.enable = true;
+    steam.enable = true;
+  };
 
   users.users.viktor = {
     isNormalUser = true;
@@ -135,9 +161,22 @@
 
   users.defaultUserShell = pkgs.zsh;
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   nixpkgs.config.allowUnfree = true;
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  fonts.packages = with pkgs; [
+    inter
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    noto-fonts-extra
+    iosevka-comfy.comfy
+    (nerdfonts.override {fonts = ["JetBrainsMono"];})
+    (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
+  ];
 
   environment.systemPackages = with pkgs; [
     vim
@@ -150,6 +189,9 @@
     neovim
     nh
     nvd
+    neovide
+    zed-editor
+    gnome.nautilus
   ];
 
   services.openssh.enable = true;
