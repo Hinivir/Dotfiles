@@ -80,6 +80,8 @@
 
     catppuccin.url = "github:catppuccin/nix";
 
+    spicetify-nix.url = "github:the-argus/spicetify-nix";
+
     neovim-flake = {
       url = "github:NotAShelf/nvf";
       inputs = {

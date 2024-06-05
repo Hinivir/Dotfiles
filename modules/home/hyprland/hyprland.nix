@@ -28,8 +28,6 @@ in {
       pkgs.rofi-wayland
       pkgs.wlogout
       pkgs.wl-clipboard
-      pkgs.foot
-      pkgs.spotify
       pkgs.vesktop
       pkgs.brightnessctl
       pkgs.networkmanagerapplet
