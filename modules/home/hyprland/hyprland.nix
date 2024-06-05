@@ -9,10 +9,6 @@
   cfg = config.hyprland;
   inherit (import ./package.nix {inherit inputs pkgs;}) grimblast hyprshot hyprpicker dbus-hyprland-env;
 in {
-  imports = [
-    inputs.anyrun.homeManagerModules.default
-  ];
-
   options.hyprland = {
     enable = mkEnableOption "Enable Hyprland";
   };
@@ -184,47 +180,6 @@ in {
       extraConfig = ''
         monitor = eDP-1,2240x1400@60,auto,1
       '';
-    };
-    programs.anyrun = {
-      enable = true;
-      config = {
-        plugins = [
-          #inputs.anyrun.packages.${pkgs.system}.applications
-          inputs.anyrun.packages.${pkgs.system}.rink
-          inputs.anyrun.packages.${pkgs.system}.translate
-          #inputs.anyrun.packages.${pkgs.system}.randr
-          inputs.anyrun.packages.${pkgs.system}.shell
-          inputs.anyrun.packages.${pkgs.system}.symbols
-          inputs.anyrun.packages.${pkgs.system}.translate
-        ];
-
-        # the x coordinate of the runner
-        #x.relative = 800;
-        # the y coordinate of the runner
-        #y.absolute = 500.0;
-        y.fraction = 0.02;
-
-        # Hide match and plugin info icons
-        hideIcons = false;
-
-        # ignore exclusive zones, i.e. Waybar
-        ignoreExclusiveZones = false;
-
-        # Layer shell layer: Background, Bottom, Top, Overlay
-        layer = "overlay";
-
-        # Hide the plugin info panel
-        hidePluginInfo = false;
-
-        # Close window when a click outside the main box is received
-        closeOnClick = false;
-
-        # Show search results immediately when Anyrun starts
-        showResultsImmediately = false;
-
-        # Limit amount of entries shown in total
-        maxEntries = 10;
-      };
     };
   };
 }
