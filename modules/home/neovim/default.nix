@@ -214,6 +214,10 @@
             setup = ''
             '';
           };
+
+          ecsls = {
+            package = inputs.ecsls.packages.${pkgs.system}.default;
+          };
         };
 
         maps.normal = {
