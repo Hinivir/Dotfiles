@@ -61,6 +61,7 @@
     pkgs.mpv
     inputs.jerry.packages.${pkgs.system}.jerry
     inputs.lobster.packages.${pkgs.system}.lobster
+    pkgs.chafa
 
     # formater
     pkgs.alejandra
