@@ -94,9 +94,8 @@
 
   services = {
     xserver.enable = true;
-    xserver.displayManager.sddm.wayland.enable = true;
     #displayManager.sddm.enable = true;
-    #displayManager.sddm.wayland.enable = true;
+    displayManager.sddm.wayland.enable = true;
     desktopManager.plasma6.enable = true;
     desktopManager.cosmic.enable = true;
     displayManager.cosmic-greeter.enable = true;
@@ -196,7 +195,7 @@
 
   services.openssh.enable = true;
 
-  nix.trustedUsers = ["root" "@wheel"];
+  nix.settings.trustedUsers = ["root" "@wheel"];
 
   system.stateVersion = "23.11";
 }
