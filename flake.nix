@@ -103,6 +103,8 @@
 
     awesome-neovim-plugins.url = "github:m15a/flake-awesome-neovim-plugins";
 
+    ecsls.url = "github:Sigmapitech/ecsls"; # Epitech codding style language server
+
     jerry.url = "github:justchokingaround/jerry";
     lobster.url = "github:justchokingaround/lobster";
 
