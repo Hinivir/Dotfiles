@@ -43,11 +43,9 @@
     pkgs.python3
     pkgs.gnome.gnome-settings-daemon
     pkgs.google-chrome
-    pkgs.awscli2
     pkgs.vscode
     pkgs.bottles
     pkgs.gh
-    pkgs.jira-cli-go
     pkgs.prismlauncher
     pkgs.jdk8
     pkgs.postman
