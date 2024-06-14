@@ -28,6 +28,7 @@ in {
       pkgs.brightnessctl
       pkgs.networkmanagerapplet
       pkgs.blueman
+      pkgs.polkit_gnome
     ];
     wayland.windowManager.hyprland = {
       enable = true;
@@ -174,6 +175,7 @@ in {
           "ags"
           "hyprctl setcursor ${pkgs.catppuccin-cursors.mochaDark} 15"
           "foot --server"
+          "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
         ];
       };
 

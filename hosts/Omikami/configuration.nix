@@ -115,6 +115,8 @@
     gnome-remote-desktop.enable = lib.mkForce false;
   };
 
+  security.polkit.enable = true;
+
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
@@ -189,6 +191,8 @@
     neovide
     zed-editor
     gnome.nautilus
+    gnome.seahorse
+    gnome.gnome-disk-utility
   ];
 
   services.openssh.enable = true;
