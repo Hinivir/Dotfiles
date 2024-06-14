@@ -12,11 +12,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1716561646,
-        "narHash": "sha256-UIGtLO89RxKt7RF2iEgPikSdU53r6v/6WYB0RW3k89I=",
+        "lastModified": 1718371084,
+        "narHash": "sha256-abpBi61mg0g+lFFU0zY4C6oP6fBwPzbHPKBGw676xsA=",
         "owner": "ryantm",
         "repo": "agenix",
-        "rev": "c2fc0762bbe8feb06a2e59a364fa81b3a57671c9",
+        "rev": "3a56735779db467538fb2e577eda28a9daacaca6",
         "type": "github"
       },
       "original": {
@@ -822,11 +822,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1718359900,
-        "narHash": "sha256-eVf70Ps7O8R3DEEfSMW54V07kxkRv5IaWMxSa77hMu4=",
+        "lastModified": 1718376341,
+        "narHash": "sha256-Xm8EyYgn752O61QHBera4ygQc/izCLyzhwIqYXqUOdA=",
         "ref": "refs/heads/main",
-        "rev": "b2590b58c51094424a9651d8df37dfab838b5bbb",
-        "revCount": 4824,
+        "rev": "a357fa3e0a60b4f96a1924e0d9753d23001ab00e",
+        "revCount": 4826,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
