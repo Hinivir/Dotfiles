@@ -8,7 +8,8 @@
     ./foot.nix
     ./git.nix
     #./gpg.nix
-    ./neovim
+    #./neovim
+    ./nixvim.nix
     ./sesh.nix
     ./spicetify.nix
     ./tmux.nix

@@ -92,6 +92,8 @@
       };
     };
 
+    my-nvim.url = "github:Hinivir/nvim";
+
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
