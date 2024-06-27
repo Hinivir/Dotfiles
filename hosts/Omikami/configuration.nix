@@ -294,7 +294,7 @@ in {
       };
     };
     desktopManager = {
-      cosmic.enable = true;
+      #cosmic.enable = true;
     };
     xserver = {
       enable = true;
