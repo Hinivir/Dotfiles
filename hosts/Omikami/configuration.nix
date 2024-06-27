@@ -251,6 +251,7 @@ in {
     gnome.gnome-disk-utility
     git
     docker-compose
+    acpi
   ];
 
   security.polkit.enable = true;
