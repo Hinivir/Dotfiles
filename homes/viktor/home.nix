@@ -30,7 +30,7 @@
   sesh.enable = true;
   wezterm.enable = true;
   foot.enable = true;
-  spicetify.enable = true;
+  #spicetify.enable = true;
   firefox.enable = true;
 
   home.packages = [
