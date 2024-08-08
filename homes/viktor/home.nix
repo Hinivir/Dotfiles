@@ -60,6 +60,7 @@
     inputs.jerry.packages.${pkgs.system}.jerry
     inputs.lobster.packages.${pkgs.system}.lobster
     pkgs.chafa
+    pkgs.zed
 
     # formater
     pkgs.alejandra

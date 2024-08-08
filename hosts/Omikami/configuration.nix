@@ -246,9 +246,9 @@ in {
     nvd
     neovide
     zed-editor
-    gnome.nautilus
-    gnome.seahorse
-    gnome.gnome-disk-utility
+    nautilus
+    seahorse
+    gnome-disk-utility
     git
     docker-compose
     acpi
@@ -296,10 +296,11 @@ in {
     desktopManager = {
       cosmic.enable = true;
     };
+    displayManager.cosmic-greeter.enable = true;
     xserver = {
       enable = true;
       displayManager = {
-        gdm.enable = true;
+        #gdm.enable = true;
         sessionCommands = ''
           xset r rate 150 25
           xrandr --output DP-0 --mode 2240x1400 --rate 60 --primary
