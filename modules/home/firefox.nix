@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: let
   cfg = config.firefox;
@@ -11,8 +12,8 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
-      firefox
+    home.packages = [
+      inputs.firefox.packages.${pkgs.system}.firefox-nightly-bin
     ];
   };
 }
