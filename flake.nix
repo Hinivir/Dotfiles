@@ -145,12 +145,12 @@
     };
 
     firefox = {
-        url = "github:nix-community/flake-firefox-nightly";
-        inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/flake-firefox-nightly";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixcord = {
-        url = "github:kaylorben/nixcord"
+      url = "github:kaylorben/nixcord";
     };
   };
 
