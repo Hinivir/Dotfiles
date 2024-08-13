@@ -178,6 +178,7 @@
         ./hosts/Omikami/configuration.nix
         inputs.home-manager.nixosModules.default
         inputs.stylix.nixosModules.stylix
+        inputs.nixcord.nixosModules.default
       ];
     };
 
