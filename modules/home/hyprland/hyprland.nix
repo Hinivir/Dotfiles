@@ -24,7 +24,6 @@ in {
       pkgs.rofi-wayland
       pkgs.wlogout
       pkgs.wl-clipboard
-      pkgs.vesktop
       pkgs.brightnessctl
       pkgs.networkmanagerapplet
       pkgs.blueman

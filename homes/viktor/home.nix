@@ -30,8 +30,9 @@
   sesh.enable = true;
   wezterm.enable = true;
   foot.enable = true;
-  #spicetify.enable = true;
+  spicetify.enable = true;
   firefox.enable = true;
+  discord.enable = true;
 
   home.packages = [
     pkgs.eza
@@ -48,7 +49,6 @@
     pkgs.gh
     pkgs.prismlauncher
     pkgs.jdk8
-    pkgs.postman
     pkgs.spotify-player
     pkgs.spotifyd
     pkgs.qutebrowser
@@ -61,6 +61,7 @@
     inputs.lobster.packages.${pkgs.system}.lobster
     pkgs.chafa
     pkgs.zed-editor
+    pkgs.appimage-run
 
     # formater
     pkgs.alejandra

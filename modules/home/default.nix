@@ -1,6 +1,7 @@
 {
   imports = [
     ./alacritty.nix
+    ./discord.nix
     ./anyrun
     ./hyprland
     ./firefox.nix

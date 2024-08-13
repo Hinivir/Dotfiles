@@ -148,6 +148,10 @@
         url = "github:nix-community/flake-firefox-nightly";
         inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixcord = {
+        url = "github:kaylorben/nixcord"
+    };
   };
 
   outputs = {
