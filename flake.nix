@@ -178,7 +178,6 @@
         ./hosts/Omikami/configuration.nix
         inputs.home-manager.nixosModules.default
         inputs.stylix.nixosModules.stylix
-        inputs.nixcord.nixosModules.default
       ];
     };
 
@@ -188,6 +187,7 @@
         modules = [
           ./homes/viktor/home.nix
           inputs.hyprland.homeManagerModules.default
+          inputs.nixcord.homeManagerModules.default
         ];
         extraSpecialArgs = {
           inherit inputs;
