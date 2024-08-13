@@ -145,8 +145,8 @@
     };
 
     firefox = {
-      url = "github:nix-community/flake-firefox-nightly";
-      inputs.nixpkgs.follows = "nixpkgs";
+        url = "github:nix-community/flake-firefox-nightly";
+        inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
