@@ -11,7 +11,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    programs.discord = {
+    programs.nixcord = {
       enable = true;
       config = {
         useQuickCss = true; # use out quickCSS
