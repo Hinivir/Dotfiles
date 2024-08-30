@@ -62,6 +62,7 @@
     pkgs.chafa
     pkgs.zed-editor
     pkgs.appimage-run
+    pkgs.twingate
 
     # formater
     pkgs.alejandra
