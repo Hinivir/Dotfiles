@@ -18,6 +18,7 @@
     theme = pkgs.alacritty-theme.catppuccin_mocha;
   };
   fzf.enable = true;
+  gpg.enable = true;
   git = {
     enable = true;
     name = "Viktor Bruggeman";

@@ -8,7 +8,7 @@
     ./fzf.nix
     ./foot.nix
     ./git.nix
-    #./gpg.nix
+    ./gpg.nix
     #./neovim
     ./nixvim.nix
     ./sesh.nix
