@@ -63,6 +63,7 @@
     pkgs.zed-editor
     pkgs.appimage-run
     pkgs.twingate
+    pkgs.spotify
 
     # formater
     pkgs.alejandra
