@@ -11,6 +11,7 @@
     ./gpg.nix
     #./neovim
     ./nixvim.nix
+    ./proton.nix
     ./sesh.nix
     ./spicetify.nix
     ./tmux.nix
