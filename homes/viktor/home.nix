@@ -65,6 +65,7 @@
     pkgs.appimage-run
     pkgs.twingate
     pkgs.spotify
+    pkgs.pinentry
 
     # formater
     pkgs.alejandra
