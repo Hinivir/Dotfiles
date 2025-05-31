@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -178,6 +180,15 @@
         ./hosts/Omikami/configuration.nix
         inputs.home-manager.nixosModules.default
         inputs.stylix.nixosModules.stylix
+      ];
+    };
+
+    nixosConfigurations.OmikamiWSL = nixpkgs.lib.nixosSystem {
+      specialArgs = {inherit inputs;};
+      modules = [
+        ./hosts/OmikamiWSL/configuration.nix
+        inputs.home-manager.nixosModules.default
+        inputs.nixos-wsl.nixosModules.wsl
       ];
     };
 
