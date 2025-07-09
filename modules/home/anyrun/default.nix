@@ -11,8 +11,6 @@ in {
   home.packages = [anyrun.packages.${pkgs.system}.stdin];
 
   programs.anyrun = {
-    enable = true;
-
     config = {
       y.fraction = 0.2;
 

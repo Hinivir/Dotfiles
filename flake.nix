@@ -198,7 +198,6 @@
         modules = [
           ./homes/viktor/home.nix
           inputs.hyprland.homeManagerModules.default
-          inputs.nixcord.homeManagerModules.nixcord
         ];
         extraSpecialArgs = {
           inherit inputs;

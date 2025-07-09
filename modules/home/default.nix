@@ -2,7 +2,7 @@
   imports = [
     ./alacritty.nix
     ./discord.nix
-    ./anyrun
+    #./anyrun
     ./hyprland
     ./firefox.nix
     ./fzf.nix

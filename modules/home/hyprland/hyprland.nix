@@ -19,7 +19,7 @@ in {
       dbus-hyprland-env
       inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
       inputs.hyprpicker
-      pkgs.xdg-desktop-portal-hyprland
+      #pkgs.xdg-desktop-portal-hyprland
       pkgs.xdg-desktop-portal-wlr
       pkgs.rofi-wayland
       pkgs.wlogout

@@ -14,7 +14,6 @@
     # additional packages to add to gjs's runtime
     extraPackages = with pkgs; [
       gtksourceview
-      webkitgtk
       accountsservice
       inotify-tools
       gtk3
@@ -29,7 +28,6 @@
       ripgrep
       slurp
       sysstat
-      python311Packages.requests
       pavucontrol
       networkmanagerapplet
       blueman

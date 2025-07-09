@@ -24,8 +24,8 @@ in {
       enable = true;
       userName = cfg.name;
       userEmail = cfg.email;
-      signing.key = null;
-      signing.signByDefault = true;
+      #signing.key = null;
+      #signing.signByDefault = true;
 
       extraConfig = {
         pull = {

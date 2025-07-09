@@ -10,15 +10,17 @@ in {
     ./hardware-configuration.nix
     #../../modules/nixos
     inputs.nixos-cosmic.nixosModules.default
+    "${builtins.fetchGit { url = "https://github.com/cgrohs27/nixos-hardware.git"; rev = "64bb927d282e67f9b37be2b5c1bd8ce3b73178d2"; }}/asus/zephyrus/ga403"
   ];
 
   boot = {
+    kernelPackages = pkgs.linuxPackages_6_13;
     kernelModules = ["v4l2loopback"]; # Autostart kernel modules on boot
     extraModulePackages = with config.boot.kernelPackages; [v4l2loopback]; # loopback module to make OBS virtual camera work
     supportedFilesystems = ["ntfs"];
     loader = {
       systemd-boot = {
-        enable = false;
+        enable = true;
         editor = false;
       };
       timeout = 10;
@@ -27,7 +29,7 @@ in {
         efiSysMountPoint = "/boot";
       };
       grub = {
-        enable = true;
+        enable = false;
         device = "nodev";
         efiSupport = true;
         useOSProber = true;
@@ -75,15 +77,9 @@ in {
   networking = {
     networkmanager.enable = true;
     enableIPv6 = false;
-    # no need to wait interfaces to have an IP to continue booting
     dhcpcd.wait = "background";
-    # avoid checking if IP is already taken to boot a few seconds faster
     dhcpcd.extraConfig = "noarp";
-    hostName = "Omikami"; # Define your hostname.
-    # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-    # Configure network proxy if necessary
-    # proxy.default = "http://user:password@proxy:port/";
-    # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+    hostName = "Omikami";
   };
 
   users = {
@@ -144,7 +140,7 @@ in {
     base16Scheme = "${pkgs.base16-schemes}/share/themes/${theme}.yaml";
     fonts = {
       monospace = {
-        package = with pkgs; nerdfonts.override {fonts = ["JetBrainsMono"];};
+        package = pkgs.nerd-fonts.jetbrains-mono;
         name = "JetBrainsMono Nerd Font";
       };
       sansSerif = {
@@ -177,13 +173,11 @@ in {
     };
   };
 
-  # Enables docker in rootless mode
   virtualisation = {
     docker.rootless = {
       enable = true;
       setSocketVariable = true;
     };
-    # Enables virtualization for virt-manager
     libvirtd.enable = true;
   };
 
@@ -206,7 +200,7 @@ in {
   };
 
   nix = {
-    package = pkgs.nixFlakes;
+    package = pkgs.nixVersions.latest;
     extraOptions = "experimental-features = nix-command flakes";
     settings = {
       auto-optimise-store = true;
@@ -252,14 +246,10 @@ in {
     git
     docker-compose
     acpi
+    firefox
   ];
 
   security.polkit.enable = true;
-
-  #services.ollama = {
-  #  enable = true;
-  #  acceleration = "cuda";
-  #};
 
   console.keyMap = "fr";
 
@@ -300,7 +290,6 @@ in {
     xserver = {
       enable = true;
       displayManager = {
-        #gdm.enable = true;
         sessionCommands = ''
           xset r rate 150 25
           xrandr --output DP-0 --mode 2240x1400 --rate 60 --primary

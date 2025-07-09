@@ -44,17 +44,17 @@
     pkgs.jq
     pkgs.lazygit
     pkgs.python3
-    pkgs.gnome.gnome-settings-daemon
+    pkgs.gnome-settings-daemon
     pkgs.google-chrome
     pkgs.vscode
-    pkgs.bottles
+    #pkgs.bottles
     pkgs.gh
     pkgs.prismlauncher
     pkgs.jdk8
     pkgs.spotify-player
     pkgs.spotifyd
-    pkgs.qutebrowser
-    pkgs.jetbrains.webstorm
+    #pkgs.qutebrowser
+    #pkgs.jetbrains.webstorm
     pkgs.bun
     pkgs.xfce.thunar
     pkgs.swww
