@@ -17,5 +17,4 @@ in {
 
       scdaemonSettings.deny-admin = true;
     };
-  };
 }
