@@ -13,8 +13,7 @@ in {
     programs.gpg = {
       enable = true;
       homedir = "${config.xdg.dataHome}/gnugpg";
-      };
-
       scdaemonSettings.deny-admin = true;
+      };
     };
 }
