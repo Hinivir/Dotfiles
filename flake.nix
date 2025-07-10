@@ -2,7 +2,7 @@
   description = "Nixos config flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz";
 
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
@@ -20,79 +20,49 @@
       url = "github:numtide/flake-utils";
     };
 
-    nil = {
-      url = "github:oxalica/nil";
+    easy-hosts = {
+      type = "github";
+      owner = "tgirlcloud";
+      repo = "easy-hosts";
+    };
+
+    lanzaboote = {
+      type = "github";
+      owner = "nix-community";
+      repo = "lanzaboote";
+
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "rust-overlay";
+        flake-parts.follows = "flake-parts";
+        pre-commit-hooks-nix.follows = "";
+        flake-compat.follows = "";
       };
     };
 
-    pre-commit-hooks = {
-      url = "github:cachix/git-hooks.nix";
+    sops = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    fht-compositor = {
+      url = "github:nferhat/fht-compositor";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    fht-share-picker = {
+      type = "github";
+      owner = "nferhat";
+      repo = "fht-share-picker";
+      ref = "gtk-rewrite";
+
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        nixpkgs-stable.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        rust-overlay.follows = "";
       };
-    };
-
-    nix-index-db = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-      };
-    };
-
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nixfmt = {
-      url = "github:nixos/nixfmt";
-      flake = false;
-    };
-
-    # Project shells
-    devshell = {
-      url = "github:numtide/devshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    ags = {
-      url = "github:Aylur/ags";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-ld = {
-      url = "github:Mic92/nix-ld";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     catppuccin.url = "github:catppuccin/nix";
-
-    spicetify-nix.url = "github:the-argus/spicetify-nix";
-
-    neovim-flake = {
-      url = "github:NotAShelf/nvf";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        nil.follows = "nil";
-        flake-utils.follows = "flake-utils";
-        flake-parts.follows = "flake-parts";
-      };
-    };
 
     my-nvim.url = "github:Hinivir/nvim";
 
@@ -100,12 +70,6 @@
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
-
-    stylix.url = "github:danth/stylix";
-
-    awesome-neovim-plugins.url = "github:m15a/flake-awesome-neovim-plugins";
 
     ecsls.url = "github:Sigmapitech/ecsls"; # Epitech codding style language server
 
@@ -122,37 +86,9 @@
       };
     };
 
-    # Hyprland
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
-    hyprpicker.url = "github:hyprwm/hyprpicker";
-
-    hyprpaper = {
-      url = "github:hyprwm/hyprpaper";
-      inputs = {
-        hyprlang.follows = "hyprland/hyprlang";
-        nixpkgs.follows = "hyprland/nixpkgs";
-        systems.follows = "hyprland/systems";
-      };
-    };
-
-    hyprland-contrib = {
-      url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "hyprland/nixpkgs";
-    };
-
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-
     firefox = {
       url = "github:nix-community/flake-firefox-nightly";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nixcord = {
-      url = "github:kaylorben/nixcord";
     };
   };
 
@@ -179,7 +115,6 @@
       modules = [
         ./hosts/Omikami/configuration.nix
         inputs.home-manager.nixosModules.default
-        inputs.stylix.nixosModules.stylix
       ];
     };
 
@@ -201,26 +136,8 @@
         ];
         extraSpecialArgs = {
           inherit inputs;
-          inherit stylix;
         };
       };
     };
-  };
-
-  nixConfig = {
-    extra-substituters = [
-      "https://nix-community.cachix.org"
-      "https://nix-gaming.cachix.org"
-      "https://cosmic.cachix.org/"
-      "https://attic.alexghr.me/public"
-    ];
-    extra-trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
-      "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
-      "public:5MqPjBBGMCWbo8L8voeQl7HXc5oX+MXZ6BSURfMosIo="
-    ];
-
-    trusted-users = ["root" "@wheel"];
   };
 }

@@ -13,10 +13,6 @@
     ../../modules/home/default.nix
   ];
 
-  alacritty = {
-    enable = true;
-    theme = pkgs.alacritty-theme.catppuccin_mocha;
-  };
   fzf.enable = true;
   gpg.enable = true;
   git = {
@@ -27,11 +23,8 @@
   tmux.enable = true;
   zoxide.enable = true;
   zsh.enable = true;
-  hyprland.enable = true;
   sesh.enable = true;
   wezterm.enable = true;
-  foot.enable = true;
-  #spicetify.enable = true;
   proton.enable = true;
   firefox.enable = true;
   discord.enable = true;
@@ -47,15 +40,11 @@
     pkgs.gnome-settings-daemon
     pkgs.google-chrome
     pkgs.vscode
-    #pkgs.bottles
     pkgs.gh
     pkgs.prismlauncher
     pkgs.jdk8
     pkgs.spotify-player
     pkgs.spotifyd
-    #pkgs.qutebrowser
-    #pkgs.jetbrains.webstorm
-    pkgs.bun
     pkgs.xfce.thunar
     pkgs.swww
     pkgs.mpv
@@ -78,7 +67,7 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     BROWSER = "firefox";
-    TERMINAL = "alacritty";
+    TERMINAL = "wezterm";
     VISUAL = "nvim";
   };
 

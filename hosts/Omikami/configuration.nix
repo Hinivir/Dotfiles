@@ -8,9 +8,11 @@
 in {
   imports = [
     ./hardware-configuration.nix
-    #../../modules/nixos
     inputs.nixos-cosmic.nixosModules.default
-    "${builtins.fetchGit { url = "https://github.com/cgrohs27/nixos-hardware.git"; rev = "64bb927d282e67f9b37be2b5c1bd8ce3b73178d2"; }}/asus/zephyrus/ga403"
+    "${builtins.fetchGit {
+      url = "https://github.com/cgrohs27/nixos-hardware.git";
+      rev = "64bb927d282e67f9b37be2b5c1bd8ce3b73178d2";
+    }}/asus/zephyrus/ga403"
   ];
 
   boot = {
@@ -112,10 +114,6 @@ in {
 
   programs = {
     zsh.enable = true;
-    hyprland = {
-      enable = true;
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-    };
     nix-ld.enable = true;
     steam.enable = true;
     nh = {
@@ -131,46 +129,6 @@ in {
     extraPortals = [
       pkgs.xdg-desktop-portal-wlr
     ];
-  };
-
-  stylix = {
-    enable = true;
-    autoEnable = true;
-    image = ./wallpaper.jpg;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/${theme}.yaml";
-    fonts = {
-      monospace = {
-        package = pkgs.nerd-fonts.jetbrains-mono;
-        name = "JetBrainsMono Nerd Font";
-      };
-      sansSerif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Sans";
-      };
-      serif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Serif";
-      };
-      sizes = {
-        applications = 10;
-        terminal = 12;
-        desktop = 10;
-        popups = 11;
-      };
-    };
-    opacity = {
-      applications = 1.0;
-      terminal = 1.0;
-      desktop = 1.0;
-      popups = 1.0;
-    };
-    polarity = "dark";
-    targets = {
-      grub.enable = false;
-      gnome.enable = false;
-      gtk.enable = true;
-      nixos-icons.enable = true;
-    };
   };
 
   virtualisation = {
@@ -208,8 +166,6 @@ in {
       warn-dirty = false;
       log-lines = 50;
       sandbox = "relaxed";
-      substituters = ["https://hyprland.cachix.org"];
-      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
     };
     gc = {
       automatic = false;
