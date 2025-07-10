@@ -103,10 +103,6 @@
       config = {
         allowUnfree = true;
       };
-      overlays = [
-        inputs.alacritty-theme.overlays.default
-        inputs.awesome-neovim-plugins.overlays.default
-      ];
     };
   in {
     nixosConfigurations.Omikami = nixpkgs.lib.nixosSystem {
